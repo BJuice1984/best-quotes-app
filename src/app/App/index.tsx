@@ -1,5 +1,4 @@
-import React from 'react'
-import Title from '../../entities/title'
+import Title from '@src/entities/title'
 import '../styles/index.scss'
 
 const title = 'best-quotes-app'

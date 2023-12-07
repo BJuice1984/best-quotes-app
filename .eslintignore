@@ -1,0 +1,9 @@
+node_modules
+public
+.eslintrc.json
+.stylelintrc.json
+webpack.config.js
+build
+dist
+*.css
+*.svg

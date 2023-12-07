@@ -1,22 +1,46 @@
 const path = require('path')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
-    entry: path.resolve(__dirname, './src/app/index.js'),
+    entry: path.resolve(__dirname, './src/app/index.tsx'),
+    devtool: 'cheap-module-source-map',
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                    },
+                ],
                 exclude: /node_modules/,
-                use: ['babel-loader'],
             },
             {
-                test: /\.s[ac]ss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                test: /\.scss$/,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-modules-typescript-loader' },
+                    { loader: 'css-loader', options: { modules: true } },
+                    { loader: 'sass-loader' },
+                ],
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: {
+                    loader: 'url-loader',
+                },
+            },
+            {
+                test: /\.(woff|woff2)$/,
+                type: 'asset/resource',
             },
         ],
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx'],
+        extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            '@src': path.resolve(__dirname, 'src'),
+        },
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -29,4 +53,9 @@ module.exports = {
         open: true,
         hot: true,
     },
+    plugins: [
+        new ESLintPlugin({
+            extensions: ['.ts', '.tsx'],
+        }),
+    ],
 }
