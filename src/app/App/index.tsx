@@ -10,6 +10,7 @@ function App() {
             <div className={styles.page__container}>
                 <div>
                     <Title text={title} />
+                    <img src='images/444443.jpg' alt='Картинка. Наброски Пикассо' />
                 </div>
             </div>
         </div>

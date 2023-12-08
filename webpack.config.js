@@ -2,6 +2,7 @@ const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: path.resolve(__dirname, './src/app/index.tsx'),
@@ -31,7 +32,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(jpg|png)$/,
+                test: /\.(jpg|jpeg|png|gif|svg)$/,
                 type: 'asset/resource',
                 generator: {
                     filename: 'static/media/[name][ext]',
@@ -72,6 +73,14 @@ module.exports = {
         }),
         new ESLintPlugin({
             extensions: ['.ts', '.tsx'],
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'dist/images',
+                    to: 'images',
+                },
+            ],
         }),
     ],
 }
