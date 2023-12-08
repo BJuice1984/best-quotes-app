@@ -1,7 +1,7 @@
 @import '@src/app/styles/mixins';
 @import '@src/app/styles/vars';
 
-.title {
+.postrow {
   @include text;
 
   color: $mainTextColor;
