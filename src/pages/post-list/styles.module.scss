@@ -7,6 +7,16 @@
   color: $mainTextColor;
   margin: 0 auto;
   max-width: 1440px;
+  height: 100vh;
+  background-color: $mainColor;
+  background-image: url('../../../dist/images/picasso-horizontal.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.title {
+  @include reset;
 }
 
 .img {
