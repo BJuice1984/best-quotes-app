@@ -1,0 +1,16 @@
+@import '@src/app/styles/mixins';
+@import '@src/app/styles/vars';
+
+.list {
+  @include text;
+
+  color: $mainTextColor;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.img {
+  @include reset;
+  @include size(auto, 100%);
+  opacity: .5;
+}

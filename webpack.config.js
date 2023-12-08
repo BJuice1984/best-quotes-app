@@ -42,7 +42,7 @@ module.exports = {
                 test: /\.(woff|woff2)$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'static/media/[name][ext]',
+                    filename: 'static/fonts/[name][ext]',
                 },
             },
         ],
@@ -55,8 +55,8 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './build'),
-        filename: 'bundle.js',
-        publicPath: '/',
+        filename: 'static/js/[name].js',
+        publicPath: '',
     },
     devServer: {
         static: path.join(__dirname, './dist'),
