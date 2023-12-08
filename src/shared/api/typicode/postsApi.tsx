@@ -9,7 +9,7 @@ interface FetchState {
 }
 
 const initialState: FetchState = {
-    data: null,
+    data: [],
     status: 'idle',
     error: null,
 }
@@ -43,7 +43,8 @@ const postsSlice = createSlice({
                     message: string
                 }
                 state.status = 'failed'
-                state.error = errorPayload?.message
+                state.error =
+                    errorPayload.message !== '' ? errorPayload.message : 'Failed to fetch posts'
             })
     },
 })

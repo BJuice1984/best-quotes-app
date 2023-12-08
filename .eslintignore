@@ -4,6 +4,7 @@ build
 .eslintrc.json
 .stylelintrc.json
 webpack.config.js
+jest.config.ts
 *.css
 *.svg
 *.scss.d.ts
