@@ -1,9 +1,7 @@
 node_modules
-public
+dist
 .eslintrc.json
 .stylelintrc.json
 webpack.config.js
-build
-dist
 *.css
 *.svg
