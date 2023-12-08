@@ -1,5 +1,7 @@
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     entry: path.resolve(__dirname, './src/app/index.tsx'),
@@ -16,6 +18,10 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
                 test: /\.scss$/,
                 use: [
                     { loader: 'style-loader' },
@@ -26,13 +32,17 @@ module.exports = {
             },
             {
                 test: /\.(jpg|png)$/,
-                use: {
-                    loader: 'url-loader',
+                type: 'asset/resource',
+                generator: {
+                    filename: 'static/media/[name][ext]',
                 },
             },
             {
                 test: /\.(woff|woff2)$/,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'static/media/[name][ext]',
+                },
             },
         ],
     },
@@ -43,8 +53,9 @@ module.exports = {
         },
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './build'),
         filename: 'bundle.js',
+        publicPath: '/',
     },
     devServer: {
         static: path.join(__dirname, './dist'),
@@ -54,6 +65,11 @@ module.exports = {
         hot: true,
     },
     plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'dist/index.html'),
+            favicon: path.resolve(__dirname, 'dist/favicon.ico'),
+        }),
         new ESLintPlugin({
             extensions: ['.ts', '.tsx'],
         }),

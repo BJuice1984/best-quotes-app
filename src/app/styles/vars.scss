@@ -1,4 +1,9 @@
-:root {
-  --color-dark: #242424;
-  --color-primary: #108ee9;
+body {
+  margin: 0;
+  background-color: #108ee9;
 }
+
+$mainColor: #1d1d20;
+$secondColor: #575194;
+$mainTextColor: #108ee9;
+$secondTextColor: #ADB5BD;

@@ -1,3 +1,7 @@
+@import '@src/app/styles/mixins.scss';
+@import '@src/app/styles/vars.scss';
+
 .title {
-  color: var(--color-primary);
+  @include text;
+  color: $mainTextColor;
 }
