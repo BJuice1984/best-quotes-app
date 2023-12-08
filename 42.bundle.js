@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbest_quotes_app=self.webpackChunkbest_quotes_app||[]).push([[42],{42:(e,s,t)=>{t.r(s),t.d(s,{default:()=>p});var a=t(893);const p=()=>(0,a.jsx)("h2",{children:"PostDetailsPage"})}}]);
