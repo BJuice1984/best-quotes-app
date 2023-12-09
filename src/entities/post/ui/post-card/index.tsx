@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom'
 import styles from './styles.module.scss'
 import { Post } from '@src/shared/api'
 
-export type PostRowProps = {
+export type PostCardProps = {
     data: Post
 }
 
-export const PostRow = ({ data }: PostRowProps) => {
+export const PostCard = ({ data }: PostCardProps) => {
     const { title, body, userId, id } = data
 
     return (
-        <div className={styles.postrow}>
+        <div className={styles.postcard}>
             <h3>{title}</h3>
             <p>{body}</p>
             <p>User ID: {userId}</p>

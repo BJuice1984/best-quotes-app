@@ -1,0 +1,8 @@
+@import '@src/app/styles/mixins';
+@import '@src/app/styles/vars';
+
+.postcard {
+  @include text;
+
+  color: $mainTextColor;
+}

@@ -1,0 +1,10 @@
+@import '@src/app/styles/mixins';
+@import '@src/app/styles/vars';
+
+.button {
+@include reset;
+@include text;
+@include size(25px, 125px);
+@include hover-opacity;
+
+}

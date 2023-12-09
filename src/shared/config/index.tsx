@@ -1,4 +1,4 @@
-//process.env для сервера нет возможности сделать, поэтому оставляю "на"
+//оставляю на будущее
 
 // const getEnvVar = (key: string): string => {
 //     const value = process.env[key]

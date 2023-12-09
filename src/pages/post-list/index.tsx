@@ -1,13 +1,16 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useDispatch } from '../../shared/config/hooks/hooks'
+import { useDispatch } from '@src/shared/hooks/hooks'
 import styles from './styles.module.scss'
-import { fetchPosts, setCurrentPage } from '@src/shared/api/typicode/postsApi'
+import { fetchPosts } from '@src/shared/api/typicode/postsApi'
 import { Post } from '@src/shared/api'
-import { PostRow } from '@src/entities/post-row'
+import { PostRow } from '@src/entities/post/ui'
+import postsModel from '@src/entities/post/model/postsModel'
 
 const PostListPage = () => {
-    const [loading, setLoading] = useState(false)
+    const { useScroll } = postsModel()
+    useScroll()
+
     const dispatch = useDispatch()
     const posts = useSelector((store: { posts: { data: Post[] } }) => store.posts.data)
 
@@ -24,25 +27,6 @@ const PostListPage = () => {
             void dispatch(fetchPosts({ page: currentPage, limit: limit }))
         }
     }, [dispatch, currentPage, limit, hasMoreData])
-
-    const handleScroll = useCallback(() => {
-        const { scrollTop, clientHeight, scrollHeight } = document.documentElement
-
-        if (scrollTop + clientHeight >= scrollHeight - 200 && !loading) {
-            setLoading(true)
-            setTimeout(() => {
-                dispatch(setCurrentPage(currentPage + 1))
-                setLoading(false)
-            }, 1000)
-        }
-    }, [dispatch, loading, currentPage])
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
-        return () => {
-            window.removeEventListener('scroll', handleScroll)
-        }
-    }, [dispatch, currentPage, handleScroll])
 
     return (
         <section className={styles.list}>
