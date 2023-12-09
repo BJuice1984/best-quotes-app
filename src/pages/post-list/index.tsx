@@ -1,26 +1,16 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useDispatch } from '@src/shared/hooks/hooks'
 import styles from './styles.module.scss'
 import { fetchPosts } from '@src/shared/api/typicode/postsApi'
-import { Post } from '@src/shared/api'
 import { PostRow } from '@src/entities/post/ui'
 import postsModel from '@src/entities/post/model/postsModel'
+import Preloader from '@src/shared/ui/preloader'
 
 const PostListPage = () => {
-    const { useScroll } = postsModel()
+    const { useScroll, isLoading, posts, currentPage, limit, hasMoreData } = postsModel()
     useScroll()
 
     const dispatch = useDispatch()
-    const posts = useSelector((store: { posts: { data: Post[] } }) => store.posts.data)
-
-    const currentPage = useSelector(
-        (store: { posts: { currentPage: number } }) => store.posts.currentPage
-    )
-    const limit = useSelector((store: { posts: { limit: number } }) => store.posts.limit)
-    const hasMoreData = useSelector(
-        (store: { posts: { hasMoreData: boolean } }) => store.posts.hasMoreData
-    )
 
     useEffect(() => {
         if (hasMoreData) {
@@ -30,6 +20,7 @@ const PostListPage = () => {
 
     return (
         <section className={styles.list}>
+            {isLoading && <Preloader />}
             <h2 className={styles.title}>PostListPage</h2>
             {posts?.map(post => (
                 <PostRow key={post.id} data={post} />
