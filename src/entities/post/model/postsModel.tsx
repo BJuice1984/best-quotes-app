@@ -16,7 +16,7 @@ const usePostsModel = () => {
         (store: { posts: { hasMoreData: boolean } }) => store.posts.hasMoreData
     )
 
-    function useScroll() {
+    function useScroll(containerRef: React.RefObject<HTMLDivElement | null>) {
         const dispatch = useDispatch()
 
         const currentPage = useSelector(
@@ -24,23 +24,28 @@ const usePostsModel = () => {
         )
 
         const handleScroll = useCallback(() => {
-            const { scrollTop, clientHeight, scrollHeight } = document.documentElement
+            const containerElement = containerRef.current
+            if (!containerElement || !hasMoreData) return
 
-            if (scrollTop + clientHeight >= scrollHeight - 200 && !isLoading) {
+            const { scrollTop, clientHeight, scrollHeight } = containerElement
+
+            if (scrollTop + clientHeight >= scrollHeight - 100) {
                 setLoading(true)
                 setTimeout(() => {
                     dispatch(setCurrentPage(currentPage + 1))
                     setLoading(false)
                 }, 1000)
             }
-        }, [dispatch, isLoading, currentPage])
+        }, [dispatch, currentPage, containerRef])
 
         useEffect(() => {
-            window.addEventListener('scroll', handleScroll)
+            const containerElement = containerRef.current
+            if (!containerElement) return
+            containerElement.addEventListener('scroll', handleScroll)
             return () => {
-                window.removeEventListener('scroll', handleScroll)
+                containerElement.removeEventListener('scroll', handleScroll)
             }
-        }, [dispatch, currentPage, handleScroll])
+        }, [dispatch, currentPage, handleScroll, containerRef])
     }
 
     return {

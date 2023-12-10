@@ -8,19 +8,23 @@
   margin: 0 auto;
   max-width: 1440px;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
   background-color: $mainColor;
   background-image: url('../../../dist/images/picasso-horizontal.jpg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
+}
+
+.container {
+  height: 80%;
+  width: 90%;
+  overflow-y: auto;
 }
 
 .title {
   @include reset;
-}
-
-.img {
-  @include reset;
-  @include size(auto, 100%);
-  opacity: .5;
 }

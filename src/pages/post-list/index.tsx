@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch } from '@src/shared/hooks/hooks'
 import styles from './styles.module.scss'
 import { fetchPosts } from '@src/shared/api/typicode/postsApi'
@@ -8,9 +8,10 @@ import Preloader from '@src/shared/ui/preloader'
 
 const PostListPage = () => {
     const { useScroll, isLoading, posts, currentPage, limit, hasMoreData } = postsModel()
-    useScroll()
 
     const dispatch = useDispatch()
+    const containerRef = useRef<HTMLDivElement>(null)
+    useScroll(containerRef)
 
     useEffect(() => {
         if (hasMoreData) {
@@ -20,11 +21,13 @@ const PostListPage = () => {
 
     return (
         <section className={styles.list}>
-            {isLoading && <Preloader />}
-            <h2 className={styles.title}>PostListPage</h2>
-            {posts?.map(post => (
-                <PostRow key={post.id} data={post} />
-            ))}
+            <h1 className={styles.title}>PostListPage</h1>
+            <div ref={containerRef} className={styles.container}>
+                {isLoading && <Preloader />}
+                {posts?.map(post => (
+                    <PostRow key={post.id} data={post} />
+                ))}
+            </div>
         </section>
     )
 }
