@@ -8,7 +8,7 @@ export const Routing = () => {
     return (
         <Routes>
             <Route path='/' element={<PostListPage />} />
-            <Route path='/post/:id' element={<PostDetailsPage />} />
+            <Route path='/posts/:id' element={<PostDetailsPage />} />
         </Routes>
     )
 }
