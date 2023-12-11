@@ -1,5 +1,6 @@
 <h1 align="center">Best Quotes App (SPA without CRA)</h1>
 <image src="./image.png" alt="Best Quotes App">
+
 ### О приложении:
 
 В этом приложении можно посмотреть цитаты с [jsonplaceholder](https://jsonplaceholder.typicode.com)!
