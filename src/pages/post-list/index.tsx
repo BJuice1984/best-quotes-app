@@ -19,7 +19,7 @@ const PostListPage = () => {
     const Row = ({ index, style }: { index: number; style: React.CSSProperties }) => (
         <div style={style}>{<PostRow key={posts[index].id} data={posts[index]} />}</div>
     )
-
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     const itemCount = posts?.length || 0
 
     return (

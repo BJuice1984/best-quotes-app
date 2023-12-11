@@ -12,9 +12,9 @@ export const PostRow = ({ data }: PostRowProps) => {
 
     return (
         <div className={styles.postrow}>
-            <p className={styles.string}>
+            <p className={styles.poststring}>
                 {`№ ${id}: ${title}. `}
-                <span className={styles.span}>{body}</span>
+                <span className={styles.postspan}>{body}</span>
             </p>
             <Link to={`/posts/${id}`}>
                 <Button name={'Просмотр'} />

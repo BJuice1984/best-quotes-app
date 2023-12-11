@@ -6,11 +6,9 @@
 
   padding: 2px;
   box-sizing: border-box;
-  backdrop-filter: blur(10px);
-  background-color: $postBackground;
 }
 
-.string {
+.poststring {
   @include reset;
   @include text;
   @include text-format(600, 24px, normal);
@@ -19,7 +17,7 @@
   padding-bottom: 5px;
 }
 
-.span {
+.postspan {
   @include reset;
   @include text;
   @include text-format(400, 16px, normal);

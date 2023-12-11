@@ -4,6 +4,7 @@
 .list {
   @include text;
 
+  position: relative;
   color: $mainTextColor;
   margin: 0 auto;
   max-width: 1440px;
@@ -19,10 +20,22 @@
   background-position: center;
 }
 
+.list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 70%);
+  z-index: 1;
+}
+
 .container {
   height: 80%;
   width: 90%;
   overflow-y: auto;
+  z-index: 10;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -41,5 +54,7 @@
 
 .title {
   @include reset;
-  @include text-format(700, 36px, normal)
+  @include text-format(700, 36px, normal);
+
+  z-index: 10;
 }
