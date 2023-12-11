@@ -1,0 +1,29 @@
+@import '@src/app/styles/mixins';
+@import '@src/app/styles/vars';
+
+.postcard {
+  @include text;
+
+  color: $mainTextColor;
+}
+
+.cardstring {
+  @include reset;
+  @include text;
+  @include text-format(600, 24px, normal);
+
+  color: $mainTextColor;
+  padding-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardspan {
+  @include reset;
+  @include text;
+  @include text-format(400, 16px, normal);
+
+  color: $mainTextColor;
+  padding-bottom: 10px;
+}

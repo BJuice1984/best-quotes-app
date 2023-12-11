@@ -1,9 +1,7 @@
-@import "normalize.css";
-@import "./vars";
-@import "./mixins";
-@import "./fonts";
+@import '@src/app/styles/mixins';
+@import '@src/app/styles/vars';
 
-body {
+.page {
 	background-color: $mainColor;
 	font-family: 'Mulish', 'Arial', sans-serif, 'Inter', system-ui, 'Avenir', 'Helvetica';
 	-moz-osx-font-smoothing: grayscale;
@@ -12,5 +10,13 @@ body {
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	text-rendering: optimizelegibility;
+  margin: 0;
 	width: 100%;
+  height: 100%;
+
+	&__container {
+		max-width: 1440px;
+		margin: 0 auto;
+		min-height: 100vh;
+	}
 }

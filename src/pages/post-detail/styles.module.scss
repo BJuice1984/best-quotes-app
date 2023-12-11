@@ -1,0 +1,22 @@
+@import '@src/app/styles/mixins';
+@import '@src/app/styles/vars';
+
+.details {
+  @include text;
+
+  color: $mainTextColor;
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $mainColor;
+}
+
+.title {
+  @include reset;
+  @include text-format(700, 36px, normal);
+
+  padding: 20px 0;
+}
