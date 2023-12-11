@@ -8,14 +8,14 @@ export type PostRowProps = {
 }
 
 export const PostRow = ({ data }: PostRowProps) => {
-    const { title, body, userId, id } = data
+    const { title, body, id } = data
 
     return (
         <div className={styles.postrow}>
-            <h3>{title}</h3>
-            <p>{body}</p>
-            <p>User ID: {userId}</p>
-            <p>Post ID: {id}</p>
+            <p className={styles.string}>
+                {`№ ${id}: ${title}. `}
+                <span className={styles.span}>{body}</span>
+            </p>
             <Link to={`/posts/${id}`}>
                 <Button name={'Просмотр'} />
             </Link>

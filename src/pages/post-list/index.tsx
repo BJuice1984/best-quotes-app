@@ -29,7 +29,7 @@ const PostListPage = () => {
                 className={styles.container}
                 height={1000}
                 itemCount={itemCount}
-                itemSize={150}
+                itemSize={200}
                 width={'90%'}
                 onItemsRendered={({ visibleStopIndex }) => {
                     if (visibleStopIndex === itemCount - 1) {

@@ -2,6 +2,8 @@
 // Please do not change this file!
 interface CssExports {
   'postrow': string;
+  'span': string;
+  'string': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
