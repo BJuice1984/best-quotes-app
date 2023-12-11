@@ -7,7 +7,7 @@ import { PostRow } from '@src/entities/post/ui'
 import postsModel from '@src/entities/post/model/postsModel'
 
 const PostListPage = () => {
-    const { posts, currentPage, limit, hasMoreData } = postsModel()
+    const { posts, currentPage, limit, loadMoreItems } = postsModel()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -15,13 +15,6 @@ const PostListPage = () => {
         dispatch(setCurrentPage(currentPage + 1))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    const loadMoreItems = () => {
-        if (hasMoreData) {
-            void dispatch(fetchPosts({ page: currentPage, limit }))
-            dispatch(setCurrentPage(currentPage + 1))
-        }
-    }
 
     const Row = ({ index, style }: { index: number; style: React.CSSProperties }) => (
         <div style={style}>{<PostRow key={posts[index].id} data={posts[index]} />}</div>
@@ -37,7 +30,7 @@ const PostListPage = () => {
                 height={1000}
                 itemCount={itemCount}
                 itemSize={150}
-                width={'100%'}
+                width={'90%'}
                 onItemsRendered={({ visibleStopIndex }) => {
                     if (visibleStopIndex === itemCount - 1) {
                         loadMoreItems()
