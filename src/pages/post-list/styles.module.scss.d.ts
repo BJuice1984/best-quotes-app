@@ -3,7 +3,6 @@
 interface CssExports {
   'container': string;
   'list': string;
-  'scrollbarWidth': string;
   'title': string;
 }
 export const cssExports: CssExports;
